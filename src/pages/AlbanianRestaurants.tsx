@@ -1,14 +1,18 @@
-function AlbanianRestaurants(){
-    return(
-        <div>
-            <div className="restaurants-in__Albania">
-                <div>
-                    <p>Albania restorant</p>
-                    <img src="" alt="" />
-                
-                </div>
-            </div>
-        </div>
-    )
+import { useEffect, useState } from "react";
+import RestaurantList from "../components/RestaurantsList";
+import { Restaurant } from "./Home";
+
+function AlbanianRestaurants() {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  useEffect(() => {
+    fetch(`http://localhost:8000/albanian-restaurants`)
+      .then((resp) => resp.json())
+      .then((data) => setRestaurants(data));
+  }, []);
+  return (
+    <main>
+      <RestaurantList restaurants={restaurants} />
+    </main>
+  );
 }
-export default AlbanianRestaurants
+export default AlbanianRestaurants;
