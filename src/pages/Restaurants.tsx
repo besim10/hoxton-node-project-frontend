@@ -5,6 +5,11 @@ export type Category = {
   id: Number;
   name: String;
 };
+export type Photo = {
+  id: Number;
+  image: String;
+  restaurantId: Number;
+};
 export type Restaurant = {
   id: Number;
   name: String;
@@ -17,6 +22,7 @@ export type Restaurant = {
   email: String;
   phoneNumber: String;
   category: Category;
+  photos: Photo[];
 };
 function Home() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
@@ -26,7 +32,6 @@ function Home() {
       .then((data) => setRestaurants(data));
   }, []);
   if (restaurants.length === 0) return <h1>Loading</h1>;
-  console.log(restaurants);
   return (
     <main>
       <RestaurantList restaurants={restaurants} />

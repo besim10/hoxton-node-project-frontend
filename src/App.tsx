@@ -4,9 +4,10 @@ import AlbanianRestaurants from "./pages/AlbanianRestaurants";
 import Header from "./components/Header";
 import KosovoRestaurants from "./pages/KosovoRestaurants";
 import Categories from "./pages/Categories";
-import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 import CategoriesDetails from "./pages/CategoriesDetails";
+import Restaurants from "./pages/Restaurants";
+import RestaurantDetail from "./pages/RestaurantDetail";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,8 +16,10 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home />} />
+        <Route index element={<Navigate to="/restaurants" />} />
+        <Route path="/" element={<Navigate to="/restaurants" />} />
+        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/restaurants/:name" element={<RestaurantDetail />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:name" element={<CategoriesDetails />} />
         <Route path="/albanian-restaurants" element={<AlbanianRestaurants />} />

@@ -110,9 +110,6 @@ main {
 .restaurant-list__item {
   outline: 1px solid black;
   position: relative;
-}
-
-.restaurant-list__item a {
   text-decoration: none;
   color: unset;
 }
@@ -180,4 +177,71 @@ main {
 }
 .category-list__item li {
   text-transform: uppercase;
+}
+.info__section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  place-content: center;
+  gap: 3rem;
+}
+.restaurant-detail__info ul {
+  display: grid;
+  list-style-type: none;
+  grid-auto-flow: row;
+}
+.restaurant-detail__info ul li {
+  padding: 0.5rem 0rem;
+}
+.restaurant-detail_info_item {
+  display: grid;
+  border-top: 1px solid black;
+  grid-template-columns: 1fr 4fr;
+  gap: 1rem;
+}
+.restaurant-detail__photos ul {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.restaurant-detail__photos ul li img {
+  border-radius: 5px;
+}
+.restaurant-detail__info span {
+  font-weight: bold;
+}
+.restaurant-detail__info h4 {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.restaurant {
+  background-color: #57636b;
+  width: min-content;
+  color: white;
+  padding: 0.2rem 1rem;
+}
+.restaurant_booking {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.restaurant_booking button {
+  width: max-content;
+  display: grid;
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 1.5rem;
+  place-self: end;
+  font-weight: bold;
+  background: none;
+  outline: 1px solid #57636b;
+  color: #57636b;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.restaurant_booking button:hover {
+  background-color: #57636b;
+  color: white;
+}
+.booking_section {
 }

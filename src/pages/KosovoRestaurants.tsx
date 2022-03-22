@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantList from "../components/RestaurantsList";
-import { Restaurant } from "./Home";
+import { Restaurant } from "./Restaurants";
 
 function KosovoRestaurants() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);

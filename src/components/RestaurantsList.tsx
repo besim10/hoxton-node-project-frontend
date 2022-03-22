@@ -1,4 +1,5 @@
-import { Restaurant } from "../pages/Home";
+import { Link } from "react-router-dom";
+import { Restaurant } from "../pages/Restaurants";
 
 type Props = {
   restaurants: Restaurant[];
@@ -7,8 +8,12 @@ function RestaurantList({ restaurants }: Props) {
   return (
     <ul className="restaurants-list">
       {restaurants.map((restaurant, index) => (
-        <li key={index} className="restaurant-list__item">
-          <a href="#">
+        <Link
+          to={`/restaurants/${restaurant.name}`}
+          key={index}
+          className="restaurant-list__item"
+        >
+          <li>
             <div className="item-info">
               <span className="item-info__category">
                 {restaurant.category.name}
@@ -19,8 +24,8 @@ function RestaurantList({ restaurants }: Props) {
             <div className="item-info__photo">
               <img src={`${restaurant.thumnail}`} />
             </div>
-          </a>
-        </li>
+          </li>
+        </Link>
       ))}
     </ul>
   );

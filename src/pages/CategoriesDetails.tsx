@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantList from "../components/RestaurantsList";
-import { Restaurant } from "./Home";
+import { Restaurant } from "./Restaurants";
 
 function CategoriesDetails() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
