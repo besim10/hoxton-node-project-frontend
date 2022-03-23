@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import RestaurantList from "../components/RestaurantsList";
 
@@ -31,7 +32,12 @@ function Home() {
       .then((resp) => resp.json())
       .then((data) => setRestaurants(data));
   }, []);
-  if (restaurants.length === 0) return <h1>Loading</h1>;
+  if (restaurants.length === 0)
+    return (
+      <h1 className="spinner">
+        <CircularProgress disableShrink />
+      </h1>
+    );
   return (
     <main>
       <RestaurantList restaurants={restaurants} />

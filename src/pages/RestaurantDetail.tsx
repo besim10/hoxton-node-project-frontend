@@ -55,8 +55,8 @@ function RestaurantDetail() {
         </section>
         <section className="restaurant-detail__photos">
           <ul>
-            {restaurant?.photos.map((photo) => (
-              <li>
+            {restaurant?.photos.map((photo, index) => (
+              <li key={index}>
                 <img src={`${photo.image}`} />
               </li>
             ))}
