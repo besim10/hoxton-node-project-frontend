@@ -3,25 +3,25 @@ import { useEffect, useState } from "react";
 import RestaurantList from "../components/RestaurantsList";
 
 export type Category = {
-  id: Number;
-  name: String;
+  id: number;
+  name: string;
 };
 export type Photo = {
-  id: Number;
-  image: String;
-  restaurantId: Number;
+  id: number;
+  image: string;
+  restaurantId: number;
 };
 export type Restaurant = {
-  id: Number;
-  name: String;
-  thumnail: String;
-  description: String;
-  location: String;
-  categoryId: Number;
-  address: String;
-  website: String;
-  email: String;
-  phoneNumber: String;
+  id: number;
+  name: string;
+  thumnail: string;
+  description: string;
+  location: string;
+  categoryId: number;
+  address: string;
+  website: string;
+  email: string;
+  phoneNumber: string;
   category: Category;
   photos: Photo[];
 };

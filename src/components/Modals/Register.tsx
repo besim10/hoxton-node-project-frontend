@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Props } from "./LogIn";
 
 function Register({ setModal, setUser }: Props) {
+  const [error, setError] = useState("");
   //@ts-ignore
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,13 +21,15 @@ function Register({ setModal, setUser }: Props) {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        if (data.error) alert(data.error);
-        else {
+        if (data.error) {
+          setError("This email is already in use.");
+        } else {
           localStorage.token = data.token;
           setUser(data.user);
+          setModal("new-user");
           setTimeout(() => {
             setModal("");
-          }, 1000);
+          }, 1500);
         }
       });
   };
@@ -42,13 +46,14 @@ function Register({ setModal, setUser }: Props) {
         }}
         className="modal-container"
       >
-        <span
+        <button
+          className="close-btn"
           onClick={() => {
             setModal("");
           }}
         >
           X
-        </span>
+        </button>
         <h3>Register</h3>
         <form onSubmit={handleSubmit}>
           <input
@@ -72,6 +77,17 @@ function Register({ setModal, setUser }: Props) {
           />
           <button type="submit">Register</button>
         </form>
+        {error !== "" ? <p className="modals-error">{error}</p> : null}
+        <p>
+          Already have an account?{" "}
+          <span
+            onClick={() => {
+              setModal("sign-in");
+            }}
+          >
+            Sign in
+          </span>
+        </p>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { User } from "../../App";
+import { Restaurant } from "../../pages/Restaurants";
 
 export type Props = {
   setModal: (value: string) => void;
@@ -9,7 +11,11 @@ type Data = {
   email: string;
   password: string;
 };
+type Error = {
+  error: string;
+};
 function LogIn({ setModal, setUser }: Props) {
+  const [error, setError] = useState<Error | null>(null);
   function signIn(data: Data) {
     fetch(`http://localhost:8000/sign-in`, {
       method: "POST",
@@ -20,11 +26,16 @@ function LogIn({ setModal, setUser }: Props) {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        setUser(data.user);
-        localStorage.setItem("token", data.token);
-        setTimeout(() => {
-          setModal("");
-        }, 1000);
+        if (data.user) {
+          setUser(data.user);
+          localStorage.setItem("token", data.token);
+          setModal("Welcome");
+          setTimeout(() => {
+            setModal("");
+          }, 1500);
+        } else {
+          setError(data);
+        }
       });
   }
   return (
@@ -46,7 +57,7 @@ function LogIn({ setModal, setUser }: Props) {
             setModal("");
           }}
         >
-          <span>X</span>
+          <button className="close-btn">X</button>
         </div>
         <h3>Log in</h3>
         <form
@@ -70,8 +81,21 @@ function LogIn({ setModal, setUser }: Props) {
             name="password"
             required
           />
+          {error !== null ? (
+            <p className="modals-error">{error?.error}</p>
+          ) : null}
           <button type="submit">Log In</button>
         </form>
+        <p>
+          Not a member yet?
+          <span
+            onClick={() => {
+              setModal("register");
+            }}
+          >
+            Sign up
+          </span>
+        </p>
       </div>
     </div>
   );

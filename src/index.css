@@ -225,12 +225,15 @@ main {
   grid-template-columns: 1fr 1fr;
   align-items: center;
 }
-.restaurant_booking button {
+
+.restaurant_booking .button.book,
+.add-to-favorite,
+.remove-from-favorites {
   width: max-content;
   display: grid;
   border: none;
   padding: 0.4rem 1rem;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   place-self: end;
   font-weight: bold;
   background: none;
@@ -239,7 +242,9 @@ main {
   border-radius: 2px;
   cursor: pointer;
 }
-.restaurant_booking button:hover {
+.restaurant_booking .button:hover,
+.add-to-favorite:hover,
+.remove-from-favorites:hover {
   background-color: #57636b;
   color: white;
 }
@@ -254,18 +259,17 @@ main {
 }
 .modal-container {
   position: relative;
-  height: 100px;
   background-color: white;
   padding: 1rem;
   border-radius: 5px;
   text-align: center;
+  gap: 1rem;
   width: 300px;
-  height: 400px;
   display: grid;
   justify-items: center;
   align-items: flex-start;
 }
-.modal-container span {
+.modal-container .close-btn {
   position: absolute;
   top: -10px;
   display: grid;
@@ -287,6 +291,11 @@ main {
 }
 .modal-container form input {
   padding: 0.5rem;
+  font-weight: bold;
+}
+.modal-container form label {
+  display: grid;
+  text-align: start;
 }
 .modal-container button {
   color: white;
@@ -297,6 +306,15 @@ main {
   cursor: pointer;
   font-weight: bold;
 }
+.modal-container span {
+  color: #57636b;
+  font-weight: bold;
+  padding-left: 2px;
+  cursor: pointer;
+}
+.modals-error {
+  color: red;
+}
 .modal-container.message {
   background-color: #88b719;
   height: auto;
@@ -304,9 +322,70 @@ main {
 .modal-container.message h3 {
   color: #000000;
 }
+.modal-container .confirm-button {
+  width: 100%;
+}
+.not-allowed input {
+  cursor: not-allowed;
+}
 .spinner {
   display: grid;
   place-items: center;
   height: 80vh;
   width: 100vw;
+}
+.reservation-list {
+  margin-top: 1rem;
+  padding: 2rem;
+  gap: 1rem;
+  display: grid;
+  grid-auto-flow: row;
+  place-content: center;
+}
+.reservation-list__item {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  place-items: center;
+  border: 1px solid black;
+  border-radius: 1rem;
+  gap: 0.5rem;
+}
+.reservation-list__item p {
+  font-weight: bold;
+}
+.reservation-list__item span {
+  display: grid;
+  font-weight: normal;
+  gap: 1rem;
+}
+.reservation-list__item-photo {
+  width: 150px;
+  height: 150px;
+}
+.reservation-list__item img {
+  object-fit: cover;
+  border-radius: 1rem;
+  height: 100%;
+  width: 100%;
+}
+.cancel_button_reservation {
+  border: none;
+  background: none;
+  border-radius: 2px;
+  font-size: 1rem;
+  background-color: #57636b;
+  padding: 0.5rem;
+  color: white;
+  cursor: pointer;
+}
+.No-favorite-and-reservation-message {
+  text-align: center;
+}
+.favorite-list__item {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  place-items: center;
+  border: 1px solid black;
+  border-radius: 1rem;
+  gap: 0.5rem;
 }
