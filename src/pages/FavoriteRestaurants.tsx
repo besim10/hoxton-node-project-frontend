@@ -48,10 +48,6 @@ function FavoriteRestaurants({ user, setUser }: Props) {
               <span>{favoriteRestaurant.restaurant.location}</span>
             </p>
             <p>
-              Category:
-              <span>{favoriteRestaurant.restaurant.category.name}</span>
-            </p>
-            <p>
               Address:
               <span>{favoriteRestaurant.restaurant.address}</span>
             </p>

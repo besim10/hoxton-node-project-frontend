@@ -407,7 +407,7 @@ img {
 }
 .favorite-list__item {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   place-items: center;
   border: 1px solid black;
   border-radius: 1rem;
