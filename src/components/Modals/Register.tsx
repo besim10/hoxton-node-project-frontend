@@ -29,7 +29,7 @@ function Register({ setModal, setUser }: Props) {
           setModal("new-user");
           setTimeout(() => {
             setModal("");
-          }, 1500);
+          }, 2000);
         }
       });
   };

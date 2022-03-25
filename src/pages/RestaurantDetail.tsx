@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { User } from "../App";
 import { Restaurant } from "./Restaurants";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import EmailIcon from "@mui/icons-material/Email";
+import LanguageIcon from "@mui/icons-material/Language";
+import AssistantDirectionIcon from "@mui/icons-material/AssistantDirection";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 type Props = {
   setModal: (value: string) => void;
@@ -95,7 +103,7 @@ function RestaurantDetail({
                   }
                 }}
               >
-                Book Now
+                <BorderColorIcon /> Book Now
               </button>
             </li>
             <li>
@@ -106,7 +114,9 @@ function RestaurantDetail({
               <h4>{restaurant?.description}</h4>
             </li>
             <li className="restaurant-detail_info_item">
-              <span>Location: </span>
+              <span>
+                <LocationOnIcon />
+              </span>
               <h4>{restaurant?.location}</h4>
             </li>
             <li className="restaurant-detail_info_item">
@@ -114,19 +124,27 @@ function RestaurantDetail({
               <h4>{restaurant?.category.name}</h4>
             </li>
             <li className="restaurant-detail_info_item">
-              <span>Address: </span>
+              <span>
+                <AssistantDirectionIcon />{" "}
+              </span>
               <h4>{restaurant?.address}</h4>
             </li>
             <li className="restaurant-detail_info_item">
-              <span>Website: </span>
+              <span>
+                <LanguageIcon />{" "}
+              </span>
               <h4>{restaurant?.website}</h4>
             </li>
             <li className="restaurant-detail_info_item">
-              <span>Email: </span>
+              <span>
+                <EmailIcon />{" "}
+              </span>
               <h4>{restaurant?.email}</h4>
             </li>
             <li className="restaurant-detail_info_item">
-              <span>Phone number: </span>
+              <span>
+                <LocalPhoneIcon />
+              </span>
               <h4>{restaurant?.phoneNumber}</h4>
             </li>
             {checkIfRestaurantIsFavorited() ? (
@@ -136,19 +154,27 @@ function RestaurantDetail({
                 }}
                 className="remove-from-favorites"
               >
-                ❌Remove from favorites
+                <DeleteIcon />
+                Remove from favorites
               </button>
             ) : (
               <button
                 onClick={() => {
-                  addToFavorites({
-                    userId: user?.id,
-                    restaurantId: restaurant?.id,
-                  });
+                  if (user === null) {
+                    setModal("sign-in-to-favorite");
+                    setTimeout(() => {
+                      setModal("sign-in");
+                    }, 1500);
+                  } else {
+                    addToFavorites({
+                      userId: user?.id,
+                      restaurantId: restaurant?.id,
+                    });
+                  }
                 }}
                 className="add-to-favorite"
               >
-                ⭐Add to favorites
+                <FavoriteIcon /> Add to favorites
               </button>
             )}
           </ul>

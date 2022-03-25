@@ -8,6 +8,7 @@ import NewUser from "./NewUser";
 import Register from "./Register";
 import SignInToContinue from "./SignInToContinue";
 import Welcome from "./Welcome";
+import SignInToAddToFavorites from "./SignInToAddToFavorites";
 type Props = {
   setModal: (value: string) => void;
   setUser: (value: User | null) => void;
@@ -31,6 +32,8 @@ function Modals({ setModal, modal, setUser, restaurant, user }: Props) {
       return <BookingSuccesfully setModal={setModal} user={user} />;
     case "already-booked":
       return <AlreadyBooked setModal={setModal} user={user} />;
+    case "sign-in-to-favorite":
+      return <SignInToAddToFavorites setModal={setModal} />;
 
     case "book":
       return (

@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { User } from "../App";
 import { useNavigate } from "react-router-dom";
-
+import HomeIcon from "@mui/icons-material/Home";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
 type Props = {
   setModal: (value: string) => void;
   user: User | null;
@@ -24,20 +26,29 @@ function Header({ setModal, user, setUser }: Props) {
     <div>
       <header className="header">
         <h1 className="header-logo">
-          <Link to="/home">Albania & Kosovo Restaurants</Link>
+          <Link to="/restaurants">Albania & Kosovo Restaurants</Link>
         </h1>
         <ul className="header-ul">
           <li className="header-home">
-            <NavLink to="/restaurants">Home</NavLink>
+            <NavLink to="/restaurants">
+              <HomeIcon />
+              Home
+            </NavLink>
           </li>
           <li className="header-categories">
             <NavLink to="/categories">Categories</NavLink>
           </li>
           <li className="header-alb__rest">
-            <NavLink to="/albanian-restaurants">Albanian Restaurants</NavLink>
+            <NavLink to="/albanian-restaurants">
+              <RestaurantIcon />
+              Albanian Restaurants
+            </NavLink>
           </li>
           <li className="header-kos__rest">
-            <NavLink to="/kosovo-restaurants">Kosovo Restaurants</NavLink>
+            <NavLink to="/kosovo-restaurants">
+              <LocalDiningIcon />
+              Kosovo Restaurants
+            </NavLink>
           </li>
           {user === null ? (
             <li onClick={() => setModal("sign-in")} className="header-signin">

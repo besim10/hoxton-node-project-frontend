@@ -41,6 +41,7 @@ function App() {
   const [modal, setModal] = useState("");
   const [user, setUser] = useState<User | null>(null);
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (localStorage.token)
@@ -70,7 +71,10 @@ function App() {
       <Routes>
         <Route index element={<Navigate to="/restaurants" />} />
         <Route path="/" element={<Navigate to="/restaurants" />} />
-        <Route path="/restaurants" element={<Restaurants />} />
+        <Route
+          path="/restaurants"
+          element={<Restaurants setSearch={setSearch} search={search} />}
+        />
         <Route
           path="/restaurants/:name"
           element={
