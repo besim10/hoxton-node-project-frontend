@@ -66,7 +66,7 @@ function Header({ setModal, user, setUser }: Props) {
                 checkForValue(e.target.value);
               }}
             >
-              <option value="">{user?.fullName}</option>
+              <option value="">👤 {user?.fullName}</option>
               <option value={"reservations"}>My reservation</option>
               <option value={"favorites"}>My fav restaurants</option>
               <option value={"sign-out"}>Log out</option>
